@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selectors</title>
+    <style>
+        /* Universal selector: selects every element on the page. */
+        * {
+            color: rgb(17, 76, 170);
+        }
+
+        /* Element selector: selects every li element. */
+        li {
+            font-size: 40px;
+        }
+
+        /* Group selector: applies the same style to h2 and li elements. */
+        h2, li {
+            font-family: sans-serif;
+        }
+
+        /* ID selector: selects the element with this unique id. */
+        #id-selector {
+            color: darkgreen;
+        }
+
+        /* Class selector: selects every element with this class. */
+        .class-selector {
+            text-decoration: underline;
+        }
+
+        /* Attribute selector: selects an element containing this attribute. */
+        li[data-selector="attribute"] {
+            color: darkorange;
+        }
+
+        /* Pseudo-class selector: selects the item while the pointer is over it. */
+        li[data-selector="pseudo-class"]:hover {
+            color: crimson;
+        }
+
+        /* Pseudo-element selector: selects the first letter of the item. */
+        li[data-selector="pseudo-element"]::first-letter {
+            color: purple;
+        }
+        input{
+            font-size: 40px;
+        }
+        input[type = "email"]{
+            color: red;
+            border-width: 0 0 3px 0;
+        }
+        button{
+            font-size: 40px;
+            color: rgb(220, 20, 180);
+            background-color: rgb(17, 76, 170);
+            border-radius: 10px;
+            padding: 10px 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        button:hover{
+            background-color: rgb(12, 110, 34);
+        }
+    </style>
+</head>
+<body>
+    <h2> Selectors</h2>
+    <ul>
+        <li>Element </li>
+        <li id="id-selector">Id</li>
+        <li class="class-selector">Class</li>
+        <li>Group</li>
+        <li>Universal</li>
+        <li data-selector="attribute">Attribute</li>
+        <li data-selector="pseudo-class">Pseudo-class</li>
+        <li data-selector="pseudo-element">Pseudo-element</li>
+        <br>
+        <input type = "email" placeholder = "Enter your email"/>
+        <br>
+        <input type = "password" placeholder = "Enter your password"/>
+        <br><br>
+        <button > Click Me </button>
+    </ul>
+</body>
+</html>

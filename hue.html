@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Simple Conic Planet</title>
+	<style>
+		body {
+			margin: 0;
+			min-height: 100vh;
+			display: grid;
+			place-items: center;
+			overflow: hidden;
+		}
+        .bg{
+            background: radial-gradient(circle at 20% 20%, #2a3142, #0b0f18);
+        }
+
+		.scene {
+			position: relative;
+			width: 320px;
+			height: 320px;
+			display: grid;
+			place-items: center;
+		}
+
+		.aura {
+			position: absolute;
+			width: 250px;
+			height: 250px;
+			border-radius: 50%;
+			background: conic-gradient(#8fb2c8, #a8c6b1, #d9c7a9, #c3aac4, #8fb2c8);
+			filter: blur(28px);
+			opacity: 0.45;
+		}
+		.planet {
+			position: relative;
+			width: 190px;
+			height: 190px;
+			border-radius: 50%;
+			background: conic-gradient(#d38f7f, #e8c89b, #a7c7d9, #8eb3a1, #b6a4cc, #d38f7f);
+		}
+	</style>
+</head>
+<body>
+	<div class="scene" aria-label="Simple conic hue planet">
+		<div class="aura"></div>
+		<div class="planet"></div>
+        <div class="bg"></div>
+	</div>
+</body>
+</html>

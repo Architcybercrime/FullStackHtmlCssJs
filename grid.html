@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <style>
+            .container{
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                /*grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));*/
+                /*grid-template-rows: repeat(2, 1fr);*/
+                outline: 1px solid black;
+                grid-template-areas:
+                    "box1 box1 box2"
+                    "box1 box1 box3"
+                    "box4 box5 box3";
+            }
+            .container>div{
+                font-size: 30px;
+                outline: 1px dashed black;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div style="grid-area: box1;">1</div>
+            <div style="grid-area: box2;">2</div>
+            <div style="grid-area: box3;">3</div>
+            <div style="grid-area: box4;">4</div>
+            <div style="grid-area: box5;">5</div>
+        </div>
+    </body>
+</html>
