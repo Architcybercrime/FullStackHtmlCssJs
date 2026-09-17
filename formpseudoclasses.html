@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title> Form Pseudo Classes </title>
+        <style>
+            input:required{
+                font-size: 40px;
+                border-width: 0 0 3px 0;
+                border-color: red;
+            }
+            input:optional{
+                font-size: 40px;
+                border-width: 0 0 3px 0;
+                border-color: rgb(96, 101, 96);
+            }
+            button:valid{
+                font-size: 40px;
+                color: rgb(21, 141, 79);
+                background-color: rgb(17, 76, 170);
+                border-radius: 10px;
+                padding: 10px 20px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+            button:hover{
+                background-color: brown;
+            }
+            button:active{
+                background-color: olive;
+            }
+            input:in-range{
+                font-size: 40px;
+                border-width: 0 0 3px 0;
+                border-color: blue;
+            }
+            div:has(h1){
+                background-color: rgb(17, 76, 170);
+                color: white;
+                padding: 20px;
+                border-radius: 10px;
+            }
+            div:not(:has(h1)){
+                background-color: rgb(20, 170, 220);
+                color: white;
+                padding: 20px;
+                border-radius: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <form>
+            <div>
+                <h1> Accha Beta </h1>
+            </div>
+            <div>
+                <h2> Bura Beta </h2>
+            </div>
+            <input type = "text" required placeholder = "First Name"/>
+            <br><br>
+            <input type = "text" optional placeholder = "Middle Name"/>
+            <br><br>
+            <input type = "text" required placeholder = "Last Name"/>
+            <br><br>
+            <input type = "email" required placeholder = "Enter your email"/>
+            <br><br>
+            <input type = "password" required placeholder = "Enter your password"/>
+            <br><br>
+            <input type = "number" required min="1" max="100" placeholder = "Enter your age"/>
+            <br><br>
+            <button valid> Submit </button>
+        </form>
+</html>

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Basic Health Bar</title>
+  <style>
+    body{display:flex;
+      align-items:center;
+      justify-content:center;
+      height:100vh;margin:0;
+      background: linear-gradient(180deg, black, white);
+      font-family:Arial,Helvetica,sans-serif;color:#fff;
+    }
+
+    .container{display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:20px}
+
+    .bar{width:300px;
+      height:22px;
+        background:#333;
+      border-radius:10px;padding:2px;box-sizing:border-box}
+
+    .fill{height:100%;width:70%;border-radius:8px;
+        background:linear-gradient(90deg,#ff4d4d,#ffd24d,#5cff7e);}
+
+    .label{font-size:14px;color:#ddd}
+
+    .donut-wrap{display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:8px}
+
+    .donut{width:140px;
+      height:140px;
+      border-radius:50%;
+      background:conic-gradient(#122b55 0deg, #141f81 252deg, #05040a 252deg 360deg);
+      position:relative;
+      display:grid;
+      place-items:center;}
+
+
+    .donut-value{position:relative;
+      font-size:22px;
+      font-weight:700;
+      color:#fff;}
+
+    @media (max-width:420px){.bar{width:86vw}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="70">
+      <div class="fill" style="width:70%"></div>
+    </div>
+    <div class="label">70 / 100</div>
+
+    <div class="donut-wrap" aria-label="Donut progress">
+      <div class="donut" role="img" aria-label="Donut chart 70 percent complete">
+        <div class="donut-value">70%</div>
+      </div>
+      <div class="label">Donut Progress</div>
+    </div>
+  </div>
+</body>
+</html>

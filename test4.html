@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crushed&family=Marvel:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <title>Spider-Man Gallery</title>
+    <style>
+        /* Base */
+        html, body {
+            height: 100%;
+            margin: 0;
+            overflow: hidden; /* hide native scrollbars */
+            background: #0e0e0e;
+            color: #fff;
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+
+        /* cross-browser scrollbar hiding */
+        html { -ms-overflow-style: none; scrollbar-width: none; }
+        *::-webkit-scrollbar { display: none; }
+
+        /* Horizontal pages container */
+        .pages {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            overflow-x: auto;
+            overflow-y: hidden;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .pages::-webkit-scrollbar { display: none; }
+
+        .page {
+            flex: 0 0 100vw;
+            height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        /* Card: text left, image right */
+        .card {
+            display: flex;
+            align-items: center;
+            width: min(1100px, 92%);
+            height: 70vh;
+            background: #111;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+        }
+
+        .card .text {
+            flex: 1 1 55%;
+            padding: 32px;
+            color: #e6e6e6;
+        }
+
+        .card .text h2 { margin: 0 0 12px 0; font-size: 1.6rem; }
+        .card .text p { margin: 0; line-height: 1.6; color: #cfcfcf }
+
+        .card .media {
+            flex: 0 0 45%;
+            height: 100%;
+        }
+
+        .card .media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        @media (max-width: 900px) {
+            .card { flex-direction: column; height: auto; }
+            .card .media { width: 100%; height: 260px; }
+            .card .text { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="pages" role="region" aria-label="Horizontal pages">
+
+        <section class="page">
+            <article class="card">
+                <div class="text">
+                    <h2>Spider-Man — 1</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia, nunc at cursus sodales, sapien lorem dictum urna, sed porttitor mi justo sit amet nulla.</p>
+                </div>
+                <div class="media">
+                    <img src="https://preview.redd.it/amazing-spider-man-wallpaper-2560x1600-v0-p9uz4f9wygm81.jpg?width=1080&crop=smart&auto=webp&s=1e426ffac04ecfdb550499e767e455e48c21c2d0" alt="Spider-Man 1">
+                </div>
+            </article>
+        </section>
+
+        <section class="page">
+            <article class="card">
+                <div class="text">
+                    <h2>Spider-Man — 2</h2>
+                    <p>Praesent tincidunt, odio a gravida facilisis, libero massa pulvinar lorem, eget cursus augue justo quis magna. Integer interdum.</p>
+                </div>
+                <div class="media">
+                    <img src="https://wallpaper.forfun.com/fetch/5d/5d9374210fd316c1ce77c8aec6290acc.jpeg" alt="Spider-Man 2">
+                </div>
+            </article>
+        </section>
+
+        <section class="page">
+            <article class="card">
+                <div class="text">
+                    <h2>Spider-Man — 3</h2>
+                    <p>Maecenas euismod, tortor in vehicula luctus, eros nunc posuere urna, non posuere nisl velit a risus. Aenean vitae mi a augue viverra.</p>
+                </div>
+                <div class="media">
+                    <img src="https://wallpapercave.com/wp/wp1816379.jpg" alt="Spider-Man 3">
+                </div>
+            </article>
+        </section>
+
+        <section class="page">
+            <article class="card">
+                <div class="text">
+                    <h2>Spider-Man — 4</h2>
+                    <p>Fusce sit amet dolor vitae urna tincidunt faucibus. Curabitur cursus, mi eget aliquet posuere, nibh sapien porta magna, non tincidunt tortor ligula nec lectus.</p>
+                </div>
+                <div class="media">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNHc2QTgV__H85T7SChQ0V3Mm2re1IQr4sIs8_jHTotA&s=10" alt="Spider-Man 4">
+                </div>
+            </article>
+        </section>
+
+        <section class="page">
+            <article class="card">
+                <div class="text">
+                    <h2>Spider-Man — 5</h2>
+                    <p>Sed sit amet lectus vitae urna molestie luctus. Suspendisse potenti. Donec porttitor, nisl id efficitur aliquet, velit urna pulvinar orci, non pharetra arcu quam a elit.</p>
+                </div>
+                <div class="media">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5bRgLVMqogvEJfh7iLmwsxUVcwK6wfXS_g95fk31zuQ&s=10" alt="Spider-Man 5">
+                </div>
+            </article>
+        </section>
+
+    </div>
+
+</body>
+</html>
