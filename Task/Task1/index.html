@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DoomSaaS - Latveria Command</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#E11D48',
+                        cardBg: '#18181B',
+                        cardBorder: '#27272A', 
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-image: linear-gradient(rgba(9, 9, 11, 0.4), rgba(9, 9, 11, 0.7)), url('bg-image.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+<body class="text-zinc-100 font-sans antialiased min-h-screen selection:bg-primary selection:text-white">
+
+    <div class="max-w-[1200px] mx-auto px-6">
+        
+        <header class="py-6">
+            <nav class="flex flex-wrap justify-between items-center">
+                
+                <button onclick="alert('ACCESS GRANTED: Stark Industries network has been successfully overridden. Welcome to DoomSaaS.')" class="flex items-center gap-3 text-2xl font-black tracking-tighter hover:opacity-80 transition-all text-left">
+                    <img src="avengers-logo.png" alt="Avengers Logo" class="h-10 w-auto">
+                    <div class="flex flex-col leading-none">
+                        <span class="line-through decoration-primary decoration-4 text-zinc-500 text-xs">Avengers</span>
+                        <span class="text-primary tracking-widest uppercase text-sm">DoomSaaS.</span>
+                    </div>
+                </button>
+                
+                <div class="hidden sm:flex items-center gap-8 text-sm font-bold uppercase tracking-wider text-zinc-300">
+                    <button onclick="alert('SYSTEM STATUS:\n- Doombot Auto-Respawn: ACTIVE\n- Vibranium Ledger: SECURED\n- Reality Anchor: STABLE')" class="hover:text-primary transition-colors bg-black/40 px-3 py-1 rounded border border-zinc-800">
+                        Features
+                    </button>
+                    <button onclick="alert('HENCHMEN ROSTER:\n- Total Active Doombots: 42,910\n- Defections today: 0\n- Standard severance: Vaporization.')" class="hover:text-primary transition-colors bg-black/40 px-3 py-1 rounded border border-zinc-800">
+                        Minions
+                    </button>
+                    <button onclick="alert('IMPERIAL TIERS:\n- Peasant: Free (taxable labor)\n- Overlord: 50 Vibranium Ingots/mo\n- Sovereign: Complete Surrender.')" class="hover:text-primary transition-colors bg-black/40 px-3 py-1 rounded border border-zinc-800">
+                        Pricing
+                    </button>
+                </div>
+
+                <div class="hidden sm:flex items-center gap-4">
+                    <button onclick="alert('SECURITY PROTOCOL:\nScanning... Threat Detected: REED RICHARDS. Evacuating chamber.')" class="text-sm font-bold text-zinc-300 hover:text-white transition-colors uppercase bg-black/50 px-3 py-2 rounded border border-zinc-800">
+                        Log in
+                    </button>
+                    <button onclick="alert('ALERT: Planetary alignment complete. Commencing launch coordinates.')" class="bg-primary text-white text-sm font-bold px-5 py-3 rounded-md hover:bg-red-700 hover:shadow-[0_0_15px_rgba(225,29,72,0.5)] transform hover:-translate-y-0.5 active:scale-95 transition-all uppercase">
+                        Letsss freakingggg gooooo!!!
+                    </button>
+                </div>
+
+                <button id="mobile-menu-btn" class="sm:hidden text-zinc-300 hover:text-white focus:outline-none bg-black/50 p-2 rounded border border-zinc-800">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+
+                <div id="mobile-menu" class="hidden w-full flex-col gap-3 mt-4 pt-4 border-t border-zinc-800 sm:hidden bg-black/90 p-4 rounded-md border border-zinc-800">
+                    <button onclick="alert('Accessing Grid Features')" class="text-left text-base font-bold text-zinc-300 hover:text-primary py-1">Features</button>
+                    <button onclick="alert('Accessing Minion Log')" class="text-left text-base font-bold text-zinc-300 hover:text-primary py-1">Minions</button>
+                    <button onclick="alert('Accessing Pricing Tables')" class="text-left text-base font-bold text-zinc-300 hover:text-primary py-1">Pricing</button>
+                    <button onclick="alert('Intruder Lockdown Activated')" class="text-left text-base font-bold text-zinc-300 hover:text-primary py-1">Log in</button>
+                    <button onclick="alert('Multiverse Strike Initialized!')" class="bg-primary text-white text-center font-bold px-4 py-3 rounded-md active:scale-95 uppercase mt-2">
+                        Let them all come, at the same time, at once!
+                    </button>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            
+            <section class="flex flex-col items-center justify-center text-center pt-20 pb-20 min-h-[500px]">
+                
+                <button onclick="alert('TIMELINE RADAR:\nIncursion detected in Section-04. Deflection shields online.')" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black/70 text-primary text-xs font-black uppercase tracking-widest mb-8 border border-red-900/80 backdrop-blur-sm hover:scale-105 active:scale-95 transition-all">
+                    <span class="relative flex h-2 w-2">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                    </span>
+                    v2.0: Collisions Alert! [Click to Inspect]
+                </button>
+
+                <div class="bg-black/60 p-6 rounded-xl backdrop-blur-sm inline-block mb-6 border border-zinc-800 shadow-2xl">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tighter leading-[1.1] max-w-[900px] drop-shadow-lg">
+                        Your next <span class="text-primary underline decoration-red-900">Doomsday</span> event but not before watching Avengers Endgame Encore!
+                    </h1>
+                </div>
+
+                <p class="text-base md:text-lg text-zinc-200 max-w-[650px] mb-10 font-medium bg-black/60 p-4 rounded-lg border border-zinc-800 backdrop-blur-sm">
+                    The ultimate villain operations platform, casue Doom is as good as reed with tech, but exceptional with magic! Track pesky Avengers.
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+                    <button onclick="alert('WISH PROTOCOL:\nDoctor Doom rejects all requests for mercy. Prepare for assimilation.')" class="bg-primary text-white font-black px-8 py-4 rounded-md hover:bg-red-700 hover:shadow-[0_0_20px_rgba(225,29,72,0.4)] transform hover:-translate-y-1 active:scale-95 transition-all w-full sm:w-auto uppercase">
+                        Get your last wishes completed before getting doomed! 
+                    </button>
+                    <button onclick="alert('RADAR SCAN:\n- Dr. Strange: Spellcasting signature found\n- Thor: Lightning detected\n- Spider-Man: Making jokes nearby')" class="bg-black/75 text-zinc-200 font-bold px-8 py-4 rounded-md border border-zinc-600 hover:bg-zinc-900 hover:text-white hover:border-primary transform hover:-translate-y-1 active:scale-95 transition-all w-full sm:w-auto uppercase backdrop-blur-sm">
+                       Threat Dashboard
+                    </button>
+                </div>
+            </section>
+
+            <section class="py-16 border-t border-zinc-800/80">
+                
+                <div class="text-center max-w-[600px] mx-auto mb-14 bg-black/60 p-6 rounded-xl backdrop-blur-sm border border-zinc-800">
+                    <h2 class="text-3xl font-black text-white mb-2 uppercase tracking-tight">Everything you need to rule the world</h2>
+                    <p class="text-zinc-400 font-medium">You all gonna die if you rely on one eye!</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    
+                    <div onclick="alert('DEPLOYMENT:\nAllotting 5,000 elite Doombots to defensive points.')" class="bg-cardBg border border-cardBorder p-8 rounded-xl hover:border-primary hover:shadow-[0_0_20px_rgba(225,29,72,0.15)] hover:-translate-y-1 active:scale-95 transition-all duration-200 cursor-pointer group">
+                        <div class="text-4xl mb-4 transform -rotate-6 group-hover:rotate-0 transition-transform">
+                            👑
+                        </div>
+                        <h3 class="text-xl font-black text-white mb-2 uppercase group-hover:text-primary transition-colors">Management for the weaks!</h3>
+                        <p class="text-zinc-300 text-sm leading-relaxed">Automate, casue for doom these humans are not worth our time!</p>
+                        <span class="inline-block mt-4 text-xs font-bold text-primary tracking-widest uppercase opacity-80 group-hover:opacity-100">Click to Deploy &rarr;</span>
+                    </div>
+
+                    <div onclick="alert('QUANTUM PREDICTION:\n14,000,605 futures calculated. Doom wins in every scenario.')" class="bg-cardBg border border-cardBorder p-8 rounded-xl hover:border-primary hover:shadow-[0_0_20px_rgba(225,29,72,0.15)] hover:-translate-y-1 active:scale-95 transition-all duration-200 cursor-pointer group">
+                        <div class="text-4xl mb-4 transform rotate-6 group-hover:rotate-0 transition-transform">
+                            🌌
+                        </div>
+                        <h3 class="text-xl font-black text-white mb-2 uppercase group-hover:text-primary transition-colors">Multiverse Analytics</h3>
+                        <p class="text-zinc-300 text-sm leading-relaxed">View real-time data across timelines!</p>
+                        <span class="inline-block mt-4 text-xs font-bold text-primary tracking-widest uppercase opacity-80 group-hover:opacity-100">Click to Scan &rarr;</span>
+                    </div>
+
+                    <div onclick="alert('SHIELD MATRIX:\nCastle Doom shielding at 100%. Lasers active. Intruder systems primed.')" class="bg-cardBg border border-cardBorder p-8 rounded-xl hover:border-primary hover:shadow-[0_0_20px_rgba(225,29,72,0.15)] hover:-translate-y-1 active:scale-95 transition-all duration-200 cursor-pointer group">
+                        <div class="text-4xl mb-4 transform -rotate-12 group-hover:rotate-0 transition-transform">
+                            👁️‍🗨️
+                        </div>
+                        <h3 class="text-xl font-black text-white mb-2 uppercase group-hover:text-primary transition-colors">Lier Security Automation</h3>
+                        <p class="text-zinc-300 text-sm leading-relaxed">Check actively on strange as he feels strange!</p>
+                        <span class="inline-block mt-4 text-xs font-bold text-primary tracking-widest uppercase opacity-80 group-hover:opacity-100">Click to Arm Traps &rarr;</span>
+                    </div>
+
+                </div>
+            </section>
+        </main>
+        
+        <footer class="mt-10 py-10 border-t border-zinc-800/80 bg-black/70 backdrop-blur-sm rounded-t-xl px-6 border-x border-zinc-800">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                
+                <div class="text-center md:text-left flex flex-col items-center md:items-start">
+                    <button onclick="alert('CREDITS:\nAll sovereign technology designed and approved by Doctor Von Doom.')" class="flex items-center gap-2 text-xl font-black tracking-tighter mb-1 text-zinc-300 hover:text-white">
+                        <img src="avengers-logo.png" alt="Avengers Logo" class="h-6 w-auto opacity-70">
+                        DOOMSAAS.
+                    </button>
+                    <p class="text-zinc-500 text-xs font-bold uppercase">© 2026 Property of Doom. All rights reserved (until the world ends).</p>
+                </div>
+
+                <div class="flex gap-4 text-xs font-bold uppercase text-zinc-500">
+                    <button onclick="alert('PRIVACY:\nDoom monitors all network activity. You have zero privacy.')" class="hover:text-primary transition-colors">Privacy</button>
+                    <button onclick="alert('TERMS:\nRebellion or non-compliance results in absolute timeline deletion.')" class="hover:text-primary transition-colors">Terms</button>
+                    <button onclick="alert('SUPPORT:\nIf systems malfunction, submit a request via paper and drop in lava.')" class="hover:text-primary transition-colors">Support</button>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            menu.classList.toggle('flex');
+        });
+    </script>
+
+</body>
+</html>
