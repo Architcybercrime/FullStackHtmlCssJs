@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task 3 - Admin Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-page: #D1EEEA; --bg-sidebar: #2A5674; --txt-sidebar: #D1EEEA;
+      --active-menu: #68ABB8; --bg-card: #FFFFFF; --txt-heading: #2A5674;
+      --txt-body: #2A5674; --border: #D1EEEA; --success: #68ABB8;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+    body { background-color: var(--bg-page); color: var(--txt-body); display: flex; min-height: 100vh; }
+
+    .sidebar {
+      width: 240px; background-color: var(--bg-sidebar); color: var(--txt-sidebar);
+      display: flex; flex-direction: column; flex-shrink: 0; position: sticky; top: 0; height: 100vh; z-index: 100; transition: transform 0.3s ease;
+    }
+    .brand { height: 64px; padding: 0 24px; display: flex; align-items: center; font-size: 18px; font-weight: 700; color: #fff; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .menu { list-style: none; padding: 20px 12px; display: flex; flex-direction: column; gap: 4px; }
+    .menu-item { display: block; padding: 10px 16px; color: var(--txt-sidebar); text-decoration: none; font-weight: 500; border-radius: 6px; cursor: pointer; }
+    .menu-item:hover, .menu-item.active { background-color: var(--active-menu); color: #fff; }
+
+    .main { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+    .header { height: 64px; background-color: var(--bg-card); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 32px; }
+    .hamburger { display: none; font-size: 24px; cursor: pointer; color: var(--txt-heading); }
+    .user { font-weight: 600; color: var(--txt-heading); display: flex; align-items: center; gap: 8px; }
+    .avatar { width: 32px; height: 32px; border-radius: 50%; background: var(--active-menu); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 13px; }
+
+    .content { padding: 32px; display: flex; flex-direction: column; gap: 24px; }
+    .title { font-size: 24px; font-weight: 700; color: var(--txt-heading); }
+    .card { background-color: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+    .card-title { font-size: 16px; font-weight: 600; color: var(--txt-heading); margin-bottom: 16px; }
+
+    .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .kpi-num { font-size: 28px; font-weight: 700; color: var(--txt-heading); margin-bottom: 4px; }
+    .kpi-label { font-size: 14px; font-weight: 500; display: flex; justify-content: space-between; }
+    .trend { font-size: 12px; font-weight: 600; color: var(--success); }
+
+    .row-2fr-1fr { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; }
+    .row-1fr-1fr { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+
+    .chart { height: 200px; display: flex; align-items: flex-end; gap: 12px; padding-bottom: 4px; border-bottom: 1px solid var(--border); }
+    .bar { flex: 1; background-color: var(--active-menu); border-radius: 4px 4px 0 0; position: relative; min-height: 20px; transition: height 0.3s; }
+    .bar-lbl { position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%); font-size: 11px; }
+
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .table { width: 100%; border-collapse: collapse; text-align: left; }
+    .table th { padding: 10px; border-bottom: 2px solid var(--border); color: var(--txt-heading); font-weight: 600; }
+    .table td { padding: 10px; border-bottom: 1px solid var(--border); }
+
+    .order-item { display: flex; justify-content: space-between; padding-bottom: 8px; border-bottom: 1px solid var(--border); margin-bottom: 8px; font-size: 13px; }
+    .order-item:last-child { border: none; margin-bottom: 0; padding-bottom: 0; }
+    .badge { font-size: 11px; font-weight: 600; padding: 2px 6px; border-radius: 4px; background: #D1EEEA; color: var(--txt-heading); }
+
+    @media (max-width: 1023px) {
+      .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+      .row-2fr-1fr, .row-1fr-1fr { grid-template-columns: 1fr; }
+      .header { padding: 0 20px; } .content { padding: 24px 20px; }
+    }
+    @media (max-width: 767px) {
+      .sidebar { position: fixed; transform: translateX(-100%); height: 100%; }
+      .sidebar.open { transform: translateX(0); }
+      .hamburger { display: block; }
+      .kpi-grid { grid-template-columns: 1fr; }
+      .overlay { display: none; position: fixed; inset: 0; background: rgba(42,86,116,0.4); z-index: 99; }
+      .overlay.active { display: block; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="overlay" id="overlay"></div>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">SaaS Admin</div>
+    <nav class="menu">
+      <a class="menu-item active" data-view="Overview">Overview</a>
+      <a class="menu-item" data-view="Analytics">Analytics</a>
+      <a class="menu-item" data-view="Users">Users</a>
+    </nav>
+  </aside>
+
+  <div class="main">
+    <header class="header">
+      <div class="hamburger" id="hamburger">☰</div>
+      <div class="user">
+        <span>Archit Agrawal</span>
+        <div class="avatar">AA</div>
+      </div>
+    </header>
+
+    <main class="content">
+      <h1 class="title" id="view-title">Overview Dashboard</h1>
+
+      <section class="kpi-grid">
+        <div class="card">
+          <div class="kpi-num">₹45,231</div>
+          <div class="kpi-label"><span>Total Revenue</span><span class="trend">+20%</span></div>
+        </div>
+        <div class="card">
+          <div class="kpi-num">+2,350</div>
+          <div class="kpi-label"><span>Subscriptions</span><span class="trend">+180%</span></div>
+        </div>
+        <div class="card">
+          <div class="kpi-num">+12,234</div>
+          <div class="kpi-label"><span>Sales</span><span class="trend">+19%</span></div>
+        </div>
+        <div class="card">
+          <div class="kpi-num">+573</div>
+          <div class="kpi-label"><span>Active Now</span><span class="trend">+4.3%</span></div>
+        </div>
+      </section>
+
+      <div class="row-2fr-1fr">
+        <section class="card">
+          <h3 class="card-title">Weekly Revenue Trends</h3>
+          <div class="chart" id="chart">
+            <div class="bar" style="height: 40%;"><span class="bar-lbl">M</span></div>
+            <div class="bar" style="height: 65%;"><span class="bar-lbl">T</span></div>
+            <div class="bar" style="height: 85%;"><span class="bar-lbl">W</span></div>
+            <div class="bar" style="height: 55%;"><span class="bar-lbl">T</span></div>
+            <div class="bar" style="height: 95%;"><span class="bar-lbl">F</span></div>
+          </div>
+        </section>
+
+        <section class="card">
+          <h3 class="card-title">Recent Orders</h3>
+          <div class="order-list">
+            <div class="order-item">
+              <div><strong>#1244 — Tanuj Vashishta</strong><br><span style="font-size: 12px;">Premium</span></div>
+              <span class="badge">Success</span>
+            </div>
+            <div class="order-item">
+              <div><strong>#1243 — Keshav Singh</strong><br><span style="font-size: 12px;">Basic</span></div>
+              <span class="badge">Success</span>
+            </div>
+            <div class="order-item">
+              <div><strong>#1242 — Avani Upadhyay</strong><br><span style="font-size: 12px;">Addon</span></div>
+              <span class="badge">Success</span>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="row-1fr-1fr">
+        <section class="card">
+          <h3 class="card-title">Traffic Overview</h3>
+          <div class="table-scroll">
+            <table class="table">
+              <thead>
+                <tr><th>Source</th><th>Visitors</th><th>Rate</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Direct Web</td><td>8,432</td><td style="color:var(--success); font-weight:600">5.2%</td></tr>
+                <tr><td>Google Search</td><td>12,943</td><td style="color:var(--success); font-weight:600">4.1%</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="card">
+          <h3 class="card-title">Top Selling Products</h3>
+          <div class="table-scroll">
+            <table class="table">
+              <thead>
+                <tr><th>Product</th><th>Sales</th><th>Revenue</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Enterprise Pack</td><td>1,204</td><td style="font-weight:600">₹12,040</td></tr>
+                <tr><td>Startup Bundle</td><td>943</td><td style="font-weight:600">₹9,430</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const ham = document.getElementById('hamburger');
+    const side = document.getElementById('sidebar');
+    const over = document.getElementById('overlay');
+    const items = document.querySelectorAll('.menu-item');
+    const viewTitle = document.getElementById('view-title');
+
+    function toggleMenu() {
+      side.classList.toggle('open');
+      over.classList.toggle('active');
+    }
+
+    ham.addEventListener('click', toggleMenu);
+    over.addEventListener('click', toggleMenu);
+
+    items.forEach(item => {
+      item.addEventListener('click', () => {
+        items.forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
+        viewTitle.textContent = `${item.getAttribute('data-view')} Dashboard`;
+        if (side.classList.contains('open')) toggleMenu();
+
+        document.querySelectorAll('.bar').forEach(b => b.style.height = `${Math.floor(Math.random() * 80) + 20}%`);
+      });
+    });
+  </script>
+</body>
+</html>
