@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task 4 - University Event</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0F172A; --secondary: #2563EB; --accent: #7C3AED;
+      --bg: #F8FAFC; --heading: #111827; --body: #475569;
+      --border: #CBD5E1; --white: #FFFFFF;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+    body { background: var(--bg); color: var(--body); font-size: 16px; line-height: 1.6; }
+    section { padding: 60px 20px; }
+    .section-container { max-width: 1100px; margin: 0 auto; }
+    .section-title { font-size: 32px; font-weight: 700; color: var(--heading); text-align: center; margin-bottom: 40px; }
+    .btn { padding: 12px 28px; border-radius: 8px; font-weight: 600; text-decoration: none; border: none; cursor: pointer; }
+    .btn-primary { background-color: var(--secondary); color: var(--white); }
+    .btn-outline { background: transparent; color: var(--white); border: 2px solid var(--white); }
+
+    .header { background: var(--primary); color: var(--white); height: 64px; display: flex; align-items: center; padding: 0 20px; }
+    .header-content { max-width: 1100px; width: 100%; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+    .brand { font-size: 18px; font-weight: 700; }
+    .nav-links { display: flex; gap: 24px; list-style: none; }
+    .nav-links a { color: var(--border); text-decoration: none; font-size: 14px; font-weight: 500; }
+    .nav-toggle { display: none; font-size: 24px; cursor: pointer; }
+    
+    .hero { height: 600px; background: linear-gradient(to bottom, var(--primary), var(--secondary)); color: var(--white); display: flex; align-items: center; justify-content: center; text-align: center; padding: 0 20px; }
+    .hero-content { max-width: 760px; }
+    .hero h1 { font-size: 56px; line-height: 1.1; margin-bottom: 16px; }
+    .hero p { font-size: 20px; opacity: 0.9; margin-bottom: 32px; }
+    .hero-buttons { display: flex; justify-content: center; gap: 16px; }
+
+    .details-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .detail-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 24px; text-align: center; }
+    .detail-card h3 { font-size: 18px; color: var(--heading); margin-bottom: 8px; }
+
+    .speakers-section { background: var(--white); }
+    .speakers-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .speaker { text-align: center; }
+    .speaker img { width: 140px; height: 140px; border-radius: 50%; object-fit: contain; background: var(--bg); margin-bottom: 12px; }
+    .speaker .name { font-size: 18px; font-weight: 600; color: var(--heading); }
+    .speaker .title { font-size: 14px; }
+    
+    .schedule-item { display: grid; grid-template-columns: 120px 1fr; align-items: center; gap: 20px; padding: 20px; border-bottom: 1px solid var(--border); }
+    .schedule-item:last-child { border-bottom: none; }
+    .schedule-time { font-size: 16px; font-weight: 700; color: var(--secondary); }
+    .schedule-title { font-size: 18px; font-weight: 600; color: var(--heading); }
+    .schedule-speaker { font-size: 14px; color: var(--accent); }
+
+    @media (max-width: 1023px) {
+      .speakers-grid { grid-template-columns: repeat(2, 1fr); }
+      .details-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 44px; }
+    }
+    @media (max-width: 767px) {
+      .section-title { font-size: 26px; }
+      .nav-links { display: none; } .nav-toggle { display: block; }
+      .hero { height: 500px; } .hero h1 { font-size: 36px; } .hero p { font-size: 18px; }
+      .hero-buttons { flex-direction: column; }
+      .speakers-grid { grid-template-columns: 1fr; }
+      .schedule-item { grid-template-columns: 90px 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-content">
+      <div class="brand">TECH SUMMIT 2026</div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#speakers">Speakers</a></li>
+          <li><a href="#schedule">Schedule</a></li>
+        </ul>
+      </nav>
+      <div class="nav-toggle">☰</div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Innovating the Future of Technology</h1>
+        <p>Join industry experts and academic leaders for a two-day summit exploring the next generation of tech.</p>
+        <div class="hero-buttons">
+          <button class="btn btn-primary">Register Now</button>
+          <a href="#schedule" class="btn btn-outline">View Schedule</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="section-container details-grid">
+        <div class="detail-card"><h3>15 Oct 2026</h3><p>Mark your calendars for a day of innovation.</p></div>
+        <div class="detail-card"><h3>GLA University</h3><p>Held at the university's main tech auditorium.</p></div>
+        <div class="detail-card"><h3>25+ Experts</h3><p>Featuring speakers from top tech companies.</p></div>
+      </div>
+    </section>
+
+    <section id="speakers" class="speakers-section">
+      <div class="section-container">
+        <h2 class="section-title">Featured Speakers</h2>
+        <div class="speakers-grid">
+          <div class="speaker"><img src="https://upload.wikimedia.org/wikipedia/commons/9/94/Robert_Downey_Jr_2014_Comic_Con_%28cropped%29.jpg" alt="Robert Downey Jr."><div class="name">Robert Downey Jr.</div><div class="title">Actor and Producer</div></div>
+          <div class="speaker"><img src="https://upload.wikimedia.org/wikipedia/commons/7/7d/Anthony_and_Joe_Russo_by_Gage_Skidmore.jpg" alt="Russo Brothers"><div class="name">Russo Brothers</div><div class="title">Film Directors</div></div>
+          <div class="speaker"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Stan%20Lee%20by%20Gage%20Skidmore%203.jpg" alt="Stan Lee"><div class="name">Stan Lee</div><div class="title">Comic Book Writer</div></div>
+          <div class="speaker"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Christopher%20Nolan%20Cannes%202018.jpg" alt="Christopher Nolan"><div class="name">Christopher Nolan</div><div class="title">Film Director</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="schedule">
+      <div class="section-container">
+        <h2 class="section-title">Event Schedule</h2>
+        <div class="schedule-item">
+          <div class="schedule-time">10:00 AM</div>
+          <div><h3 class="schedule-title">Opening Ceremony</h3><span class="schedule-speaker">Welcome Address</span></div>
+        </div>
+        <div class="schedule-item">
+          <div class="schedule-time">11:00 AM</div>
+          <div><h3 class="schedule-title">The Future of AI</h3><span class="schedule-speaker">Dr. Ananya Sharma</span></div>
+        </div>
+        <div class="schedule-item">
+          <div class="schedule-time">01:30 PM</div>
+          <div><h3 class="schedule-title">Cloud Computing</h3><span class="schedule-speaker">Vikram Singh</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    document.querySelector('.nav-toggle').addEventListener('click', () => {
+      alert("Mobile menu clicked!");
+    });
+  </script>
+</body>
+</html>
